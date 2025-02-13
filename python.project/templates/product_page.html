@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ product.name }} - The Lopsided Market</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <!-- Header with a logo and navigation -->
+    <header class="header">
+        <div class="logo">
+            <h1>The Lopsided Market</h1>
+        </div>
+        <nav class="nav">
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('register') }}">Register</a></li>
+                <li><a href="{{ url_for('login') }}">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Product Detail Section -->
+    <main class="product-detail-container">
+        <h2>{{ product.name }}</h2>
+        <div class="product-detail-card">
+            <!-- Product Image -->
+            <img src="{{ url_for('static', filename='images/' + product.image_url) }}" alt="{{ product.name }}" class="product-detail-image">
+            
+            <!-- Product Information -->
+            <div class="product-detail-info">
+                <p>{{ product.description }}</p>
+                <p class="price">${{ product.price }}</p>
+                
+                <!-- Add to Cart Form -->
+                <form action="{{ url_for('add_to_cart', product_id=product.id) }}" method="POST">
+                    <button type="submit" class="btn">Add to Cart</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer with some contact info or social media links -->
+    <footer class="footer">
+        <p>&copy; 2025 The Lopsided Market. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+

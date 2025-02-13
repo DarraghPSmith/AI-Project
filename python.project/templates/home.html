@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Lopsided Market</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <!-- Header with a logo and navigation -->
+    <header class="header">
+        <div class="logo">
+            <h1>The Lopsided Market</h1>
+        </div>
+        <nav class="nav">
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('register') }}">Register</a></li>
+                <li><a href="{{ url_for('login') }}">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main content section displaying products -->
+    <main class="product-container">
+        <h2>Our Fresh Products</h2>
+        <div class="product-grid">
+            {% for product in products %}
+                <div class="product-card">
+                    <img src="{{ product.image_url }}" alt="{{ product.name }}" class="product-image">
+                    <h3>{{ product.name }}</h3>
+                    <p>{{ product.description }}</p>
+                    <p class="price">${{ product.price }}</p>
+                    <a href="{{ url_for('product_page', product_id=product.id) }}" class="btn">View Details</a>
+                </div>
+            {% endfor %}
+        </div>
+    </main>
+
+    <!-- Footer with some contact info or social media links -->
+    <footer class="footer">
+        <p>&copy; 2025 The Lopsided Market. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Login - Mis-Shapen Produce Store{% endblock %}
+
+{% block content %}
+    <!-- Header with a logo and navigation -->
+    <header class="header">
+        <div class="logo">
+            <h1>The Lopsided Market</h1>
+        </div>
+        <nav class="nav">
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('register') }}">Register</a></li>
+                <li><a href="{{ url_for('login') }}">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main content section for login form -->
+    <main class="login-container">
+        <h2>Login</h2>
+        <form action="{{ url_for('login') }}" method="POST" class="login-form">
+            <div class="form-group">
+                <label for="username">Username:</label><br>
+                <input type="text" id="username" name="username" required><br><br>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password:</label><br>
+                <input type="password" id="password" name="password" required><br><br>
+            </div>
+
+            <button type="submit" class="btn">Login</button>
+        </form>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 The Lopsided Market. All rights reserved.</p>
+    </footer> 
+{% endblock %}
